@@ -1,0 +1,75 @@
+{% load static %}
+{% load compress %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  {% block head %}
+  {% block meta %}
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% endblock meta %}
+  <title>WWR Clone | {% block title %}{% endblock %}</title>
+  {% block base_stylesheets %}
+  <!-- Jquery-->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+
+  <!-- Bootstrap 4 Js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+    crossorigin="anonymous"></script>
+
+  <!-- Custom Bootstrap 4 Css -->
+  {% compress css %}
+  <link rel="stylesheet" type="text/x-scss" href="{% static 'css/base_styles.scss' %}" />
+  {% endcompress %}
+
+  {% endblock base_stylesheets %}
+  {% endblock head %}
+</head>
+
+<body>
+  {% block body %}
+  <nav class="navbar fixed-top navbar-expand-lg px-md-10 navbar-light bg-white">
+    <a class="navbar-brand" href="#">
+      <img src="{% static "images/wwr_logo.svg" %}" width="76" alt="WWR" loading="lazy">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#togglerControls"
+      aria-controls="togglerControls" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="togglerControls">
+      <form class="form-inline navbar-nav ml-auto">
+        <a href="#" class='btn btn-danger'>Post a job</a>
+      </form>
+    </div>
+  </nav>
+
+  <div role="main">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <div class="px-10">
+          <h1 class="text-center header-logo"></h1>
+        </div>
+        <section class="px-10 intro">
+          <p class="text-center">We Work Remotely is the <strong>largest remote work community in the
+              world.</strong> With over 2.5M monthly visitors, WWR is the #1 destination to find and list incredible
+            remote jobs.</p>
+        </section>
+        <p class="text-center">
+          <a href="#" class='btn btn-danger btn-lg'>Post a job</a>
+        </p>
+      </div>
+    </div>
+
+
+    {% endblock body %}
+</body>
+
+</html>
