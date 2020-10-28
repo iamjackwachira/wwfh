@@ -10,12 +10,9 @@ class JobPost(BaseModel):
 
     title = models.CharField(max_length=200)
     description = HTMLField()
-    category = models.ForeignKey(
-        "Category", on_delete=models.CASCADE, related_name="job_posts"
-    )
     job_type = models.CharField(choices=choices.JOB_TYPE_CHOICES, max_length=100)
-    company_location = models.CharField(max_length=200)
-    regional_restrictions = models.CharField(
+    job_location = models.CharField(max_length=200)
+    job_category = models.CharField(
         choices=choices.JOB_CATEGORY_CHOICES, max_length=100
     )
     application_url = models.CharField(max_length=200)
@@ -37,9 +34,9 @@ class Company(BaseModel):
 
     name = models.CharField(max_length=200)
     company_statement = models.CharField(max_length=500)
-    logo = models.ImageField(upload_to="images/")
+    logo = models.ImageField(upload_to="company_uploads/", blank=True, null=True)
     url = models.CharField(max_length=200)
-    email = models.CharField(max_length=200)
+    email = models.CharField(max_length=200, blank=True, null=True)
     description = HTMLField()
 
     class Meta:
@@ -48,16 +45,3 @@ class Company(BaseModel):
 
     def __str__(self):
         return self.name
-
-
-class Category(BaseModel):
-    """ Category for a job post """
-
-    title = models.CharField(max_length=200)
-
-    class Meta:
-        ordering = ["-created_on"]
-        verbose_name_plural = "Categories"
-
-    def __str__(self):
-        return self.title

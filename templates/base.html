@@ -51,7 +51,7 @@
     </div>
   </nav>
 
-  <div role="main">
+  <main role="main">
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
         <div class="px-10">
@@ -67,9 +67,22 @@
         </p>
       </div>
     </div>
+    <section>
+      <div class="text-center trusted-banner w-50">
+      </div>
+    </section>
+    <div class="container">
+
+      {% block job_list %}
+      {% endblock job_list %}
+
+    </div>
+
+  </main>
 
 
-    {% endblock body %}
+
+  {% endblock body %}
 </body>
 
 </html>

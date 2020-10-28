@@ -7,6 +7,7 @@ $spacers: (
 );
 
 .jumbotron {
+    margin-bottom: 0;
     background-image: url("../images/wwr_header.svg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -27,9 +28,25 @@ $spacers: (
     font-size: 1.2rem;
 }
 
+.trusted-banner {
+    background-position: center;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-image: url("../images/trusted_banner.png");
+    display: block;
+    margin: 0 auto;
+    width: 85%;
+    padding-top: 14%;
+}
+
 body {
     min-height: 75rem;
     padding-top: 4.5rem;
 }
 
 @import "static/bootstrap/scss/bootstrap";
+@import "jobs";
+
+.jumbotron {
+    margin-bottom: 0;
+}
