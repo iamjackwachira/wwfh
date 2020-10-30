@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load widget_tweaks %}
+<main role="main" class="job-new">
+    <div class="container">
+        <section class="row">
+            <div class="col">
+                <form class="job-form mx-auto">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <h4 class="text-danger">Tell Us About The Position
+                                <span class="required-field-label">REQUIRED
+                                    FIELDS <p class="required-field">●</p></span>
+                            </h4>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label>Job Title</label>
+                            <p class="required-field"> ●</p>
+                            {% render_field form.job_title class+="form-control form-control-lg" %}
+                            <span class="input-text">Example: “Senior Designer”. &nbsp; Titles must describe one
+                                position.</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Category</label>
+                            <p class="required-field"> ●</p>
+                            {% render_field form.job_category class+="form-control form-control-lg" %}
+                        </div>
+                        <div class="form-group col-md-6 job-type">
+                            <label>Job Type</label>
+                            <p class="required-field"> ●</p>
+                            {% render_field form.job_type %}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Job Location</label>
+                            <p class="required-field"> ●</p>
+                            {% render_field form.job_location class+="form-control form-control-lg" %}
+                            <span class="input-text">Example: “Chicago, IL”, “Stockholm, Sweden”</span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputCity">Regional Restrictions</label>
+                            <p class="required-field"> ●</p>
+                            {% render_field form.job_regional_restrictions class+="form-control form-control-lg" %}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="inputState">How To Apply</label>
+                            <p class="required-field"> ●</p>
+                            {% render_field form.job_application_url class+="form-control form-control-lg" %}
+
+                            <span class="input-text">Link to Application page or Email address</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="inputZip">Job Description</label>
+                            <p class="required-field"> ●</p>
+                            {% render_field form.job_description rows="10" cols="30" title="Hello, world!" %}
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <h4 class="text-danger">Tell Us More About Your Company</h4>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label>Company Name</label>
+                            <p class="required-field"> ●</p>
+                            {% render_field form.company_name class+="form-control form-control-lg" %}
+                            <span class="input-text">Enter your company or organization’s name.</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label>Company Statement</label>
+                            <p class="required-field"> ●</p>
+                            {% render_field form.company_statement class+="form-control form-control-lg" %}
+                            <span class="input-text">Enter your company or organization’s mission statement. This will
+                                be displayed on your company’s profile</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label>Logo</label>
+                            <p class="required-field"> ●</p>
+                            {% render_field form.company_logo class+="form-control form-control-lg" %}
+                            <span class="input-text">It’s highly recommended to use your Twitter or Facebook avatar.
+                                Optional — Your company logo will appear at the top of your listing</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Company Website URL</label>
+                            <p class="required-field"> ●</p>
+                            {% render_field form.company_url class+="form-control form-control-lg" %}
+
+                            <span class="input-text">Example: https://mybusiness.com/</span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Email</label>
+                            <p class="required-field"> ●</p>
+                            {% render_field form.company_email class+="form-control form-control-lg" %}
+                            <span class="input-text">We’ll send your receipt and confirmation email here.</span>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label>Company Description</label>
+                            <p class="required-field"> ●</p>
+                            {% render_field form.company_description class+="form-control form-control-lg" %}
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-danger float-right">Submit</button>
+                </form>
+            </div>
+        </section>
+    </div>
+</main>
+{% endblock content %}

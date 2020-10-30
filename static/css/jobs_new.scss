@@ -1,0 +1,73 @@
+.job-new {
+    background-image: url("../images/jobs_new_bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    .job-form {
+        max-width: calc(100% - 175px);
+        padding: 25px;
+        margin-top: 40px;
+        background-color: white;
+
+        .form-row {
+            font-weight: 600;
+            color: #212529;
+            font-size: 1.1rem;
+
+            .form-group {
+                &.job-type {
+                    ul {
+                        padding: 0;
+                        margin-top: 10px;
+                        li {
+                            display: inline;
+                            padding-right: 30px;
+                        }
+                    }
+                }
+                span {
+                    &.input-text {
+                        padding-top: 5px;
+                        display: inline-block;
+                        font-size: 0.8em;
+                        color: #909294;
+                        font-weight: 400;
+                    }
+                    &.required-field-label {
+                        display: inline;
+                        font-size: 12px;
+                        color: #909294;
+                        float: right;
+                    }
+                }
+                p.required-field {
+                    color: #f03e3e;
+                    display: inline;
+                    position: relative;
+                    font-size: 9px;
+                    line-height: 4;
+                    top: -2px;
+                    left: 4px;
+                }
+            }
+
+            [class*="col-"] {
+                padding-right: 5px;
+                padding-left: 20px;
+            }
+
+            .form-control {
+                font-size: 0.95rem;
+                cursor: auto;
+                border-color: rgba(144, 146, 148, 0.2);
+                border-style: solid;
+                border-radius: 3px;
+                margin: 0 0 5px 0;
+                background-color: #f8f9fa;
+                outline-width: 2px;
+                outline-color: rgba(144, 146, 148, 0.2);
+            }
+        }
+    }
+}

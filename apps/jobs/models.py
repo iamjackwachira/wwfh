@@ -15,6 +15,9 @@ class JobPost(BaseModel):
     job_category = models.CharField(
         choices=choices.JOB_CATEGORY_CHOICES, max_length=100
     )
+    regional_restrictions = models.CharField(
+        choices=choices.REGIONAL_RESTRICTIONS_CHOICES, max_length=100
+    )
     application_url = models.CharField(max_length=200)
     company = models.ForeignKey(
         "Company", on_delete=models.CASCADE, related_name="job_posts"

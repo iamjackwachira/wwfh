@@ -39,7 +39,7 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS = ["compressor"]
+THIRD_PARTY_APPS = ["compressor", "tinymce", "widget_tweaks"]
 
 LOCAL_APPS = ["core", "jobs"]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -138,3 +138,25 @@ COMPRESS_PRECOMPILERS = (("text/x-scss", "django_libsass.SassCompiler"),)
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
+
+# Tiny MCE
+
+TINYMCE_DEFAULT_CONFIG = {
+    "cleanup_on_startup": True,
+    "custom_undo_redo_levels": 20,
+    "selector": "textarea",
+    "theme": "silver",
+    "plugins": """preview codesample code lists fullscreen  insertdatetime  nonbreaking
+            contextmenu directionality searchreplace wordcount visualblocks autolink charmap hr
+            anchor
+            """,
+    "toolbar1": """
+            fullscreen preview bold italic underline | fontselect,
+            fontsizeselect  | forecolor backcolor | alignleft alignright |
+            aligncenter alignjustify | indent outdent | bullist numlist |
+            | link image media | codesample |
+            """,
+    "contextmenu": "formats | link image",
+    "menubar": False,
+    "statusbar": True,
+}

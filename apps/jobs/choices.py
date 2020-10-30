@@ -18,3 +18,16 @@ JOB_CATEGORY_CHOICES = Choices(
     ("product", _("Product")),
     ("other", _("All Other Remote")),
 )
+
+REGIONAL_RESTRICTIONS_CHOICES = Choices(
+    ("anywhere", _("Anywhere (100% Remote Only)")),
+    ("usa_only", _("USA Only")),
+    ("north_america_only", _("North America Only")),
+    ("europe_only", _("Europe Only")),
+    ("americas_only", _("Americas Only")),
+    ("canada_only", _("Canada Only")),
+    ("emea_only", _("EMEA Only")),
+    ("asia_only", _("Asia Only")),
+    ("africa_only", _("Africa Only")),
+    ("other", _("Other")),
+)
