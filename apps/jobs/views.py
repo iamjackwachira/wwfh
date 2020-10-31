@@ -1,10 +1,12 @@
 from collections import defaultdict
 
 from django.db.models import Count
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from django.urls import reverse
 from django.views.generic import ListView, FormView
 
-from .models import JobPost
+
+from .models import JobPost, Company
 from .forms import JobPostForm
 
 
@@ -35,8 +37,28 @@ class JobCreateView(FormView):
     template_name = "jobs/job_create.html"
 
     def get_success_url(self):
-        return reverse("jobs:job_list")
+        return reverse("jobs:jobs-home")
 
     def form_valid(self, form):
-        form.save()
+        company = Company()
+        company.company_statement = form.cleaned_data.get("company_statement")
+        company.description = form.cleaned_data.get("company_description")
+        company.email = form.cleaned_data.get("company_email")
+        company.logo = form.cleaned_data.get("company_logo")
+        company.name = form.cleaned_data.get("company_name")
+        company.url = form.cleaned_data.get("company_url")
+        company.save()
+
+        job_post = JobPost()
+        job_post.company = company
+        job_post.application_url = form.cleaned_data.get("job_application_url")
+        job_post.description = form.cleaned_data.get("job_description")
+        job_post.job_category = form.cleaned_data.get("job_category")
+        job_post.job_location = form.cleaned_data.get("job_location")
+        job_post.job_type = form.cleaned_data.get("job_type")
+        job_post.regional_restrictions = form.cleaned_data.get(
+            "job_regional_restrictions"
+        )
+        job_post.title = form.cleaned_data.get("job_title")
+        job_post.save()
         return redirect(self.get_success_url())

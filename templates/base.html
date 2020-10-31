@@ -36,7 +36,7 @@
 <body>
   {% block body %}
   <nav class="navbar fixed-top navbar-expand-lg px-md-10 navbar-light bg-white">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/">
       <img src="{% static "images/wwr_logo.svg" %}" width="76" alt="WWR" loading="lazy">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#togglerControls"
@@ -46,9 +46,11 @@
 
 
     <div class="collapse navbar-collapse" id="togglerControls">
+      {% if request.path == '/' %}
       <form class="form-inline navbar-nav ml-auto">
-        <a href="#" class='btn btn-danger'>Post a job</a>
+        <a href="/jobs/new/" class='btn btn-danger'>Post a job</a>
       </form>
+      {% endif %}
     </div>
   </nav>
 

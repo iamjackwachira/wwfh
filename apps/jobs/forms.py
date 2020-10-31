@@ -6,10 +6,15 @@ import jobs.choices as choices
 from .models import Company, JobPost
 
 
+class TinyMCEWidget(TinyMCE):
+    def use_required_attribute(self, *args):
+        return False
+
+
 class JobPostForm(forms.Form):
     job_title = forms.CharField()
     job_application_url = forms.CharField()
-    job_description = forms.CharField(widget=TinyMCE())
+    job_description = forms.CharField(widget=TinyMCEWidget())
     job_type = forms.ChoiceField(
         choices=choices.JOB_TYPE_CHOICES, widget=forms.RadioSelect
     )
@@ -20,7 +25,7 @@ class JobPostForm(forms.Form):
     )
     company_name = forms.CharField()
     company_statement = forms.CharField()
-    company_logo = forms.FileField()
+    company_logo = forms.ImageField()
     company_url = forms.CharField()
     company_email = forms.EmailField()
     company_description = forms.CharField(widget=TinyMCE())

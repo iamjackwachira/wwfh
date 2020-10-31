@@ -6,6 +6,5 @@ app_name = "jobs"
 
 urlpatterns = [
     path("", views.JobListView.as_view(), name="jobs-home"),
-    path("jobs", views.JobListView.as_view(), name="jobs-list"),
-    path("jobs/new", views.JobCreateView.as_view(), name="new-job"),
+    path("jobs/new/", views.JobCreateView.as_view(), name="new-job"),
 ]

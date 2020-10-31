@@ -6,9 +6,13 @@
     <div class="container">
         <section class="row">
             <div class="col">
-                <form class="job-form mx-auto">
+                <form class="job-form mx-auto" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
                     <div class="form-row">
                         <div class="form-group col-md-12">
+                            {% if form.errors %}
+                            <div class="error-block text-danger">* Please fix the errors below</div>
+                            {% endif %}
                             <h4 class="text-danger">Tell Us About The Position
                                 <span class="required-field-label">REQUIRED
                                     FIELDS <p class="required-field">●</p></span>
@@ -60,10 +64,11 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-12">
+                        <div class="form-group {% if form.job_description.errors %} has-error{% endif %}col-md-12">
                             <label for="inputZip">Job Description</label>
                             <p class="required-field"> ●</p>
                             {% render_field form.job_description rows="10" cols="30" title="Hello, world!" %}
+                            <div class="error-block text-danger">{{ form.job_description.errors }}</div>
                         </div>
                     </div>
                     <br>
@@ -91,12 +96,13 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-12">
+                        <div class="form-group {% if form.company_logo.errors %} has-error{% endif %}col-md-12">
                             <label>Logo</label>
                             <p class="required-field"> ●</p>
                             {% render_field form.company_logo class+="form-control form-control-lg" %}
                             <span class="input-text">It’s highly recommended to use your Twitter or Facebook avatar.
                                 Optional — Your company logo will appear at the top of your listing</span>
+                            <div class="error-block text-danger">{{ form.company_logo.errors }}</div>
                         </div>
                     </div>
                     <div class="form-row">
@@ -116,10 +122,11 @@
 
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-12">
+                        <div class="form-group {% if form.company_description.errors %} has-error{% endif %}col-md-12">
                             <label>Company Description</label>
                             <p class="required-field"> ●</p>
                             {% render_field form.company_description class+="form-control form-control-lg" %}
+                            <div class="error-block text-danger">{{ form.company_description.errors }}</div>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-danger float-right">Submit</button>
