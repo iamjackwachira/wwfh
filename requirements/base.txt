@@ -4,4 +4,5 @@ django==3.1.2  # https://www.djangoproject.com/
 
 django-tinymce==3.1.0 # https://github.com/jazzband/django-tinymce
 django-model-utils==4.0.0 # https://django-model-utils.readthedocs.io/en/latest/fields.html
+django-widget-tweaks==1.4.8 # https://github.com/jazzband/django-widget-tweaks
 pillow==8.0.1 # https://github.com/python-pillow/Pillow

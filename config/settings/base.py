@@ -148,7 +148,7 @@ TINYMCE_DEFAULT_CONFIG = {
     "selector": "textarea",
     "theme": "silver",
     "plugins": """preview codesample code lists fullscreen  insertdatetime  nonbreaking
-            contextmenu directionality searchreplace wordcount visualblocks autolink charmap hr
+            directionality searchreplace wordcount visualblocks autolink charmap hr
             anchor
             """,
     "toolbar1": """
