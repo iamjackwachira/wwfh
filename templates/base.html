@@ -47,23 +47,17 @@
       aria-controls="togglerControls" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
-
     <div class="collapse navbar-collapse" id="togglerControls">
       {% if request.path == '/' %}
       <form class="form-inline navbar-nav ml-auto">
-        <a href="/jobs/new/" class='btn btn-danger'>Post a job</a>
+        <a href="{% url 'jobs:job-create' %}" class='btn btn-danger'>Post a job</a>
       </form>
       {% endif %}
     </div>
   </nav>
 
-
   {% block content %}
   {% endblock content %}
-
-
-
 
   {% endblock body %}
 </body>

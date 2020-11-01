@@ -3,7 +3,7 @@
     <li class="feature">
         <div class="highlight-bar"></div>
         <div class="company-logo">
-            <a href="/company/komoot">
+            <a href="{% url 'jobs:company-detail' pk=post.company.id %}">
                 {% if post.company.logo %}
                 <div class="flag-logo" style="background-image: url({{post.company.logo.url}})" loading="lazy">
                 </div>

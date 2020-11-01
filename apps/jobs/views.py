@@ -125,3 +125,15 @@ class JobDetailView(DetailView):
         ).exclude(id=job_post.id)
         context["posts"] = related_jobs
         return context
+
+
+class CompanyDetailView(DetailView):
+    model = Company
+    template_name = "jobs/company_detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        company = self.get_object()
+        related_jobs = JobPost.objects.filter(company=company)
+        context["posts"] = related_jobs
+        return context

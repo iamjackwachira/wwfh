@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+{% load widget_tweaks %}
+<main role="main">
+    <div class="job-nav">
+        <a href="/">
+            <p style="float: left;z-index: 999;"><span id="arrow-left">←</span> Back to all jobs </p>
+        </a>
+    </div>
+    <div class="content">
+        <div class="company-detail">
+            <div class="listing-header">
+                <div class="listing-header-container">
+                    <div class="listing-logo" style="background-image: url({{company.logo.url}});">
+                    </div>
+                    <h1> {{company.name}} </h1><br>
+                    <h3>
+                        <i class="fas fa-map-marker-alt" style="margin-left: 0px;"></i>
+                        {% if company.headquarters %}
+                        {{company.headquarters}}
+                        {% else %}
+                        Remote
+                        {% endif %}
+                    </h3><br>
+                    <h4> Jobs posted: 130 </h4><br>
+                    <div class="listing-tools">
+                        <div class="tools">
+                        </div><a target="_blank" href="{{company.url}}">
+                            <h5> View website <span id="arrow-right">→</span></h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <section class="company">
+                <div class="company-description">
+                    {{company.description|safe}}
+                </div>
+            </section>
+
+        </div>
+        <div class="jobs-container">
+            <section class="jobs company-jobs">
+                <article>
+                    <h2> All {{company.name|capfirst}} Jobs
+                        <span class="font-weight-light h6 latest_post">
+                            Latest post about {{posts.0.created_on|timesince}} ago
+                        </span>
+                    </h2>
+                    {% include "jobs/job_posts.html" %}
+                </article>
+            </section>
+        </div>
+    </div>
+</main>
+{% endblock content %}

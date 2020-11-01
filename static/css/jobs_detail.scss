@@ -99,14 +99,10 @@
                 background-size: contain;
                 background-color: #fff;
                 background-position: center center;
-
-                img {
-                    transform: translateY(-50%);
-                }
             }
         }
     }
-    section.jobs {
+    section.related-jobs {
         article {
             max-width: 675px;
             margin-top: 40px;
@@ -133,6 +129,8 @@
                 }
             }
         }
+    }
+    section.job {
         .listing-container {
             width: 675px;
             padding: 20px 0px 0 0;
@@ -148,5 +146,19 @@
             width: 675px;
             margin: 0;
         }
+    }
+}
+
+.job-nav {
+    display: block;
+    overflow: hidden;
+    margin: 35px auto 10px;
+    width: 950px;
+    font-size: 1rem;
+    padding: 0px 0 0 5px;
+
+    a,
+    p {
+        color: #f03e3e;
     }
 }

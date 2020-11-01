@@ -4,6 +4,13 @@
 {% block content %}
 {% load widget_tweaks %}
 <main role="main">
+    <div class="job-nav"><a href="{% url 'jobs:jobs-home' %}?job_category={{job_post.job_category}}">
+            <p style="float: right;"> See more {{job_post.get_job_category_display}} jobs<span id="arrow-right">→</span>
+            </p>
+        </a><a href="/">
+            <p style="float: left;z-index: 999;"><span id="arrow-left">←</span> Back to all jobs </p>
+        </a>
+    </div>
     <div class="content">
         <div class="job-post-header">
             <div class="job-post-header-container">
@@ -21,12 +28,12 @@
                 </a>
             </div>
             <div class="company-details">
-                <a href="">
+                <a href="{% url 'jobs:company-detail' pk=job_post.company.id %}">
                     <div class="company-logo" style="background-image: url({{job_post.company.logo.url}});"
                         loading="lazy">
                     </div>
                 </a>
-                <h2><a href="/company/upcounsel">{{job_post.company.name}}</a></h2>
+                <h2><a href="{% url 'jobs:company-detail' pk=job_post.company.id %}">{{job_post.company.name}}</a></h2>
                 <h3>
                     <i class="fas fa-map-marker-alt"></i> {{job_post.job_location}}
                 </h3>
@@ -53,15 +60,15 @@
                     Apply for this position
                 </a>
             </div>
-            <div class="jobs-container" id="job_list">
-                <section class="jobs">
+            <div class="jobs-container">
+                <section class="jobs related-jobs">
                     <article>
-                        <h2> Related Jobs <span style="float: right;"><a href="/"> See more
+                        <h2> Related Jobs <span style="float: right;"><a
+                                    href="{% url 'jobs:jobs-home' %}?job_category={{job_post.job_category}}"> See more
                                     {{job_post.get_job_category_display}} jobs<span id="arrow-right">→</span></a></span>
                         </h2>
                         {% include "jobs/job_posts.html" %}
                     </article>
-
                 </section>
             </div>
         </section>

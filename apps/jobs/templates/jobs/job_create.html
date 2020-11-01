@@ -5,6 +5,13 @@
 <main role="main" class="job-new">
     <div class="container">
         <section class="row">
+            <div class="job-nav">
+                <a href="/">
+                    <p style="float: left;z-index: 999;"><span id="arrow-left">←</span> Back to all jobs </p>
+                </a>
+            </div>
+        </section>
+        <section class="row">
             <div class="col">
                 <form class="job-form mx-auto" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
@@ -119,7 +126,6 @@
                             {% render_field form.company_email class+="form-control form-control-lg" %}
                             <span class="input-text">We’ll send your receipt and confirmation email here.</span>
                         </div>
-
                     </div>
                     <div class="form-row">
                         <div class="form-group {% if form.company_description.errors %} has-error{% endif %}col-md-12">
