@@ -10,10 +10,10 @@
             <div class="col">
                 <article class="mx-auto">
                     <h2>
-                        <a class="text-dark h4 category" href="/categories/remote-programming-jobs">{{category}}
+                        <a class="text-dark h4 category" href="?job_category={{category}}">{{category}}
                             Jobs</a>
                         <span class="font-weight-light h6 latest_post">
-                            Latest post about {{posts.0.date_posted|timesince}} ago
+                            Latest post about {{posts.0.created_on|timesince}} ago
                         </span>
                     </h2>
                     {% include "jobs/job_posts.html" %}

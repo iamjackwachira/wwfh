@@ -1,13 +1,25 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <div class="px-10">
-            <h1 class="text-center header-logo"></h1>
+            <h1 class="text-center header-logo">
+                {% if header_name %}
+                Remote {{header_name}} jobs
+                {% else %}
+                We Work Remotely
+                {% endif %}
+            </h1>
         </div>
         <section class="px-10 intro">
+            {% if header_name %}
+            <p class="text-center">
+                Find all <strong>{{header_name}}</strong> remote jobs below
+            </p>
+            {% else %}
             <p class="text-center">We Work Remotely is the <strong>largest remote work community in the
                     world.</strong> With over 2.5M monthly visitors, WWR is the #1 destination to find and list
                 incredible
                 remote jobs.</p>
+            {% endif %}
         </section>
         <p class="text-center">
             <a href="{% url 'jobs:job-create' %}" class='btn btn-danger btn-lg'>Post a job</a>

@@ -10,13 +10,13 @@
                 <h3> Posted {{job_post.created_on|date:"M d" }}
                 </h3>
                 <h1> {{job_post.title}} </h1>
-                <a href="">
+                <a href="{% url 'jobs:jobs-home' %}?job_type={{job_post.job_type}}">
                     <span class="post-tag">{{job_post.get_job_type_display}}</span>
                 </a>
-                <a href="">
+                <a href="{% url 'jobs:jobs-home' %}?job_category={{job_post.job_category}}">
                     <span class="post-tag">{{job_post.get_job_category_display}}</span>
                 </a>
-                <a href="">
+                <a href="{% url 'jobs:jobs-home' %}?regional_restrictions={{job_post.regional_restrictions}}">
                     <span class="post-tag">{{job_post.get_regional_restrictions_display}}</span>
                 </a>
             </div>

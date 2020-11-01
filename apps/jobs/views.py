@@ -5,7 +5,11 @@ from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views.generic import DetailView, ListView, FormView
 
-
+from .choices import (
+    JOB_TYPE_CHOICES,
+    JOB_CATEGORY_CHOICES,
+    REGIONAL_RESTRICTIONS_CHOICES,
+)
 from .models import JobPost, Company
 from .forms import JobPostForm
 
@@ -15,12 +19,57 @@ class JobListView(ListView):
     template_name = "jobs/job_list.html"
     context_object_name = "job_posts"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        header_name = ""
+
+        if "job_type" in self.request.GET:
+            try:
+                job_type = JOB_TYPE_CHOICES[self.request.GET.get("job_type")]
+                header_name = job_type
+            except KeyError:
+                pass
+
+        if "job_category" in self.request.GET:
+            try:
+                job_category = JOB_CATEGORY_CHOICES[
+                    self.request.GET.get("job_category")
+                ]
+                header_name = job_category
+            except KeyError:
+                pass
+
+        if "regional_restrictions" in self.request.GET:
+            try:
+                regional_restrictions = REGIONAL_RESTRICTIONS_CHOICES[
+                    self.request.GET.get("regional_restrictions")
+                ]
+                header_name = regional_restrictions
+            except KeyError:
+                pass
+
+        context["header_name"] = header_name
+        return context
+
     def get_queryset(self):
         queryset = super().get_queryset()
+        job_type = self.request.GET.get("job_type", None)
+        if job_type:
+            queryset = queryset.filter(job_type=job_type)
+
+        job_category = self.request.GET.get("job_category", None)
+        if job_category:
+            queryset = queryset.filter(job_category=job_category)
+
+        regional_restrictions = self.request.GET.get("regional_restrictions", None)
+        if regional_restrictions:
+            queryset = queryset.filter(regional_restrictions=regional_restrictions)
+
         grouped_job_posts = defaultdict(list)
         for job_post in queryset.iterator():
             grouped_job_posts[job_post.job_category].append(
                 {
+                    "id": job_post.id,
                     "title": job_post.title,
                     "company": job_post.company,
                     "get_job_type_display": job_post.get_job_type_display(),

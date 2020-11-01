@@ -10,7 +10,7 @@
                 {% endif %}
             </a>
         </div>
-        <a href="/remote-jobs/komoot-senior-web-developer-node-reactjs">
+        <a href="{% url 'jobs:job-detail' pk=post.id %}">
             <span class="company">{{post.company.name}}</span>
             <br>
             <span class="title">{{post.title}}</span>
