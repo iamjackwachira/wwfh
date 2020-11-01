@@ -47,7 +47,15 @@ body {
 @import "static/bootstrap/scss/bootstrap";
 @import "jobs";
 @import "jobs_new";
+@import "jobs_detail";
 
 .jumbotron {
     margin-bottom: 0;
+}
+
+a,
+a:visited,
+a:hover {
+    color: #4d5154;
+    text-decoration: none !important;
 }

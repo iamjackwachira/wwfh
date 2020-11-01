@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+{% load widget_tweaks %}
+<main role="main">
+    <div class="content">
+        <div class="job-post-header">
+            <div class="job-post-header-container">
+                <h3> Posted {{job_post.created_on|date:"M d" }}
+                </h3>
+                <h1> {{job_post.title}} </h1>
+                <a href="">
+                    <span class="post-tag">{{job_post.get_job_type_display}}</span>
+                </a>
+                <a href="">
+                    <span class="post-tag">{{job_post.get_job_category_display}}</span>
+                </a>
+                <a href="">
+                    <span class="post-tag">{{job_post.get_regional_restrictions_display}}</span>
+                </a>
+            </div>
+            <div class="company-details">
+                <a href="">
+                    <div class="company-logo" style="background-image: url({{job_post.company.logo.url}});"
+                        loading="lazy">
+                    </div>
+                </a>
+                <h2><a href="/company/upcounsel">{{job_post.company.name}}</a></h2>
+                <h3>
+                    <i class="fas fa-map-marker-alt"></i> {{job_post.job_location}}
+                </h3>
+                <h3><a target="_blank" href="{{job_post.company.url}}">
+                        <i class="fas fa-globe-americas"></i> View website
+                    </a>
+                </h3>
+                <h4> Jobs posted: 1 </h4>
+                <a target="_blank" id="job-cta-alt-2" href="{{job_post.application_url}}" class="btn btn-danger">
+                    Apply for this position
+                </a>
+                <a href="/">
+                    <h5> View all jobs<span id="arrow-right">→</span></h5>
+                </a>
+                <br>
+            </div>
+        </div>
+        <section class="job" id="job-show">
+            <div class="listing-container" id="job-listing-show-container">
+                {{job_post.description|safe}}
+            </div>
+            <div class="listing-tools listing-tools-desktop">
+                <a target="_blank" id="job-cta-alt-2" href="{{job_post.application_url}}" class="btn btn-danger">
+                    Apply for this position
+                </a>
+            </div>
+            <div class="jobs-container" id="job_list">
+                <section class="jobs">
+                    <article>
+                        <h2> Related Jobs <span style="float: right;"><a href="/"> See more
+                                    {{job_post.get_job_category_display}} jobs<span id="arrow-right">→</span></a></span>
+                        </h2>
+                        {% include "jobs/job_posts.html" %}
+                    </article>
+
+                </section>
+            </div>
+        </section>
+    </div>
+</main>
+{% endblock content %}

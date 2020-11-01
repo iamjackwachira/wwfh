@@ -16,32 +16,7 @@
                             Latest post about {{posts.0.date_posted|timesince}} ago
                         </span>
                     </h2>
-                    <ul>
-                        {% for post in posts %}
-                        <li class="feature">
-                            <div class="highlight-bar"></div>
-                            <div class="company-logo">
-                                <a href="/company/komoot">
-                                    {% if post.company_logo %}
-                                    <div class="flag-logo" style="background-image: url({{post.company_logo}})"
-                                        loading="lazy">
-                                    </div>
-                                    {% endif %}
-                                </a>
-                            </div>
-                            <a href="/remote-jobs/komoot-senior-web-developer-node-reactjs">
-                                <span class="company">{{post.company_name}}</span>
-                                <br>
-                                <span class="title">{{post.job_title}}</span>
-                                <span class="date_posted">{{post.date_posted|date:"M d"}}</span>
-                                <br>
-                                <span class="company">{{post.job_type}}</span>
-                                <span>/</span>
-                                <span class="region company">{{post.job_location}}</span>
-                            </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
+                    {% include "jobs/job_posts.html" %}
                 </article>
             </div>
         </section>

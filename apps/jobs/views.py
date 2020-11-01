@@ -3,7 +3,7 @@ from collections import defaultdict
 from django.db.models import Count
 from django.shortcuts import redirect, render
 from django.urls import reverse
-from django.views.generic import ListView, FormView
+from django.views.generic import DetailView, ListView, FormView
 
 
 from .models import JobPost, Company
@@ -21,12 +21,11 @@ class JobListView(ListView):
         for job_post in queryset.iterator():
             grouped_job_posts[job_post.job_category].append(
                 {
-                    "job_title": job_post.title,
-                    "company_name": job_post.company.name,
-                    "company_logo": job_post.company.logo.url,
-                    "job_type": job_post.get_job_type_display(),
+                    "title": job_post.title,
+                    "company": job_post.company,
+                    "get_job_type_display": job_post.get_job_type_display(),
                     "job_location": job_post.job_location,
-                    "date_posted": job_post.created_on,
+                    "created_on": job_post.created_on,
                 }
             )
         return dict(grouped_job_posts)
@@ -62,3 +61,18 @@ class JobCreateView(FormView):
         job_post.title = form.cleaned_data.get("job_title")
         job_post.save()
         return redirect(self.get_success_url())
+
+
+class JobDetailView(DetailView):
+    model = JobPost
+    template_name = "jobs/job_detail.html"
+    context_object_name = "job_post"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        job_post = self.get_object()
+        related_jobs = JobPost.objects.filter(
+            job_category=job_post.job_category
+        ).exclude(id=job_post.id)
+        context["posts"] = related_jobs
+        return context
