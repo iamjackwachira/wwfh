@@ -4,7 +4,7 @@ div.company-detail {
     -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
     border-radius: 2px;
-    margin: 20px 2px 70px 0px;
+    margin: 20px 2px 40px 0px;
     min-height: 275px;
 
     .listing-header {
@@ -105,6 +105,9 @@ div.company-detail {
 div.jobs-container {
     section.company-jobs {
         article {
+            h2 {
+                font-size: 20px;
+            }
             max-width: 100%;
         }
     }

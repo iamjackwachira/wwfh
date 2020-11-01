@@ -12,7 +12,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% endblock meta %}
-  <title>WWR Clone | {% block title %}{% endblock %}</title>
+  <title> WWFH | WWR Clone {% block title %}{% endblock %}</title>
   {% block base_stylesheets %}
   <!-- Jquery-->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -33,15 +33,18 @@
   <!-- Fontawesome -->
   <script src="https://kit.fontawesome.com/50492a28bc.js" crossorigin="anonymous"></script>
 
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
+
   {% endblock base_stylesheets %}
   {% endblock head %}
 </head>
 
 <body>
   {% block body %}
-  <nav class="navbar fixed-top navbar-expand-lg px-md-10 navbar-light bg-white">
+  <nav class="navbar fixed-top navbar-expand-lg px-md-10 navbar-light bg-light">
     <a class="navbar-brand" href="/">
-      <img src="{% static "images/wwr_logo.svg" %}" width="76" alt="WWR" loading="lazy">
+      WWFH
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#togglerControls"
       aria-controls="togglerControls" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,6 +62,10 @@
   {% block content %}
   {% endblock content %}
 
+  <footer>
+    <a class="github-fork-ribbon right-bottom fixed" href="https://github.com/iamjackwachira/wwr-clone"
+      data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
+  </footer>
   {% endblock body %}
 </body>
 

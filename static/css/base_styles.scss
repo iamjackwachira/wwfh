@@ -6,12 +6,17 @@ $spacers: (
     ),
 );
 
-.jumbotron {
-    margin-bottom: 0;
-    background-image: url("../images/wwr_header.svg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+nav {
+    a.navbar-brand {
+        font-family: "Verdana";
+        font-size: 0.9rem;
+        transform: scale(1.2, 2);
+        font-weight: 600;
+
+        i {
+            color: #c82332;
+        }
+    }
 }
 
 .intro {
@@ -20,20 +25,18 @@ $spacers: (
     font-size: 1.2rem;
 }
 
-.trusted-banner {
-    background-position: center;
-    background-size: 100% auto;
-    background-repeat: no-repeat;
-    background-image: url("../images/trusted_banner.png");
-    display: block;
-    margin: 0 auto;
-    width: 85%;
-    padding-top: 14%;
-}
-
 body {
     min-height: 75rem;
     padding-top: 4.5rem;
+    position: relative;
+    min-height: 100vh;
+}
+footer {
+    background: #212529;
+    overflow: hidden;
+    margin-top: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 @import "static/bootstrap/scss/bootstrap";
@@ -44,11 +47,5 @@ body {
 
 .jumbotron {
     margin-bottom: 0;
-}
-
-a,
-a:visited,
-a:hover {
-    color: #4d5154;
-    text-decoration: none !important;
+    background: #fff;
 }
