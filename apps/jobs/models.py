@@ -47,5 +47,9 @@ class Company(BaseModel):
         ordering = ["-created_on"]
         verbose_name_plural = "Companies"
 
+    @property
+    def num_jobs_posted(self):
+        return self.job_posts.count()
+
     def __str__(self):
         return self.name

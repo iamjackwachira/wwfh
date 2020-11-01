@@ -12,10 +12,14 @@ nav {
         font-size: 0.9rem;
         transform: scale(1.2, 2);
         font-weight: 600;
+        letter-spacing: 0.5px;
 
         i {
             color: #c82332;
         }
+    }
+    .post-job {
+        margin-left: 10px;
     }
 }
 
@@ -30,13 +34,16 @@ body {
     padding-top: 4.5rem;
     position: relative;
     min-height: 100vh;
+    margin-bottom: 50px;
 }
+
 footer {
-    background: #212529;
-    overflow: hidden;
-    margin-top: 10px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    position: fixed;
+    height: 50px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
 }
 
 @import "static/bootstrap/scss/bootstrap";

@@ -122,7 +122,7 @@ class JobDetailView(DetailView):
         job_post = self.get_object()
         related_jobs = JobPost.objects.filter(
             job_category=job_post.job_category
-        ).exclude(id=job_post.id)
+        ).exclude(id=job_post.id)[:3]
         context["posts"] = related_jobs
         return context
 
