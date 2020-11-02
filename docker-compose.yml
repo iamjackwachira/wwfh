@@ -1,0 +1,41 @@
+version: '3.7'
+
+services:
+    wwr_clone_web:
+        build: .
+        entrypoint: bash /code/docker-entrypoint.sh
+        container_name: wwr_clone_web
+        image: wwr_clone_web
+        volumes:
+            - .:/code
+            - static-content:/static
+        ports:
+            - "8888:8888"
+        depends_on:
+            - wwr_clone_postgres
+        links:
+            - wwr_clone_postgres
+        environment:
+            DATABASE_URL: "postgres://root:postgres@wwr_clone_postgres:5432/wwr_clone"
+
+    wwr_clone_postgres:
+        container_name: wwr_clone_postgres
+        image: postgres:11
+        environment:
+            POSTGRES_DB: wwr_clone
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: postgres
+        volumes:
+            - /var/lib/postgresql/data/
+        ports:
+            - "5432:5432"
+        restart: always
+
+networks:
+    default:
+        external:
+            name: local
+
+volumes:
+    postgres_data:
+    static-content:

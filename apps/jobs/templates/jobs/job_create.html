@@ -113,18 +113,18 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group {% if form.company_url.errors %} has-error{% endif %}col-md-6">
                             <label>Company Website URL</label>
                             <p class="required-field"> ●</p>
                             {% render_field form.company_url class+="form-control form-control-lg" %}
-
                             <span class="input-text">Example: https://mybusiness.com/</span>
+                            <div class="error-block text-danger">{{ form.company_url.errors }}</div>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group {% if form.company_email.errors %} has-error{% endif %}col-md-6">
                             <label>Email</label>
                             <p class="required-field"> ●</p>
                             {% render_field form.company_email class+="form-control form-control-lg" %}
-                            <span class="input-text">We’ll send your receipt and confirmation email here.</span>
+                            <div class="error-block text-danger">{{ form.company_email.errors }}</div>
                         </div>
                     </div>
                     <div class="form-row">

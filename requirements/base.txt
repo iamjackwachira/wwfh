@@ -1,8 +1,13 @@
 # Django
 # ------------------------------------------------------------------------------
 django==3.1.2  # https://www.djangoproject.com/
+django-environ==0.4.5  # https://github.com/joke2k/django-environ
 
 django-tinymce==3.1.0 # https://github.com/jazzband/django-tinymce
 django-model-utils==4.0.0 # https://django-model-utils.readthedocs.io/en/latest/fields.html
 django-widget-tweaks==1.4.8 # https://github.com/jazzband/django-widget-tweaks
-pillow==8.0.1 # https://github.com/python-pillow/Pillow
+pillow==6.2.2 # https://github.com/python-pillow/Pillow
+
+psycopg2==2.8.4 --no-binary psycopg2  # https://github.com/psycopg/psycopg2
+django-compressor==2.4 # https://github.com/django-compressor/django-compressor
+django-libsass==0.8 # https://github.com/torchbox/django-libsass
