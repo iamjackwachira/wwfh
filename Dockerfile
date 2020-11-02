@@ -15,6 +15,6 @@ RUN pip3 install -r requirements/production.txt --no-cache-dir
 
 COPY . /code
 
-EXPOSE 8888
+EXPOSE 8080
 
 ENTRYPOINT ["bash", "/code/docker-entrypoint.sh"]

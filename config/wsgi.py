@@ -1,5 +1,5 @@
 """
-WSGI config for wwr_clone project.
+WSGI config for wwfh project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -17,6 +17,6 @@ app_path = os.path.abspath(
 )
 sys.path.append(os.path.join(app_path, "apps"))
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.local')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.local")
 
 application = get_wsgi_application()

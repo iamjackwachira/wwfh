@@ -1,28 +1,28 @@
 version: '3.7'
 
 services:
-    wwr_clone_web:
+    wwfh_web:
         build: .
         entrypoint: bash /code/docker-entrypoint.sh
-        container_name: wwr_clone_web
-        image: wwr_clone_web
+        container_name: wwfh_web
+        image: wwfh_web
         volumes:
             - .:/code
             - static-content:/static
         ports:
-            - "8888:8888"
+            - "8080:8080"
         depends_on:
-            - wwr_clone_postgres
+            - wwfh_postgres
         links:
-            - wwr_clone_postgres
+            - wwfh_postgres
         environment:
-            DATABASE_URL: "postgres://root:postgres@wwr_clone_postgres:5432/wwr_clone"
+            DATABASE_URL: "postgres://root:postgres@wwfh_postgres:5432/wwfh"
 
-    wwr_clone_postgres:
-        container_name: wwr_clone_postgres
+    wwfh_postgres:
+        container_name: wwfh_postgres
         image: postgres:11
         environment:
-            POSTGRES_DB: wwr_clone
+            POSTGRES_DB: wwfh
             POSTGRES_USER: root
             POSTGRES_PASSWORD: postgres
         volumes:
