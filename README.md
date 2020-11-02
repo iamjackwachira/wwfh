@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/iamjackwachira/wwfh.svg?branch=main)](https://travis-ci.com/iamjackwachira/wwfh)
 # We Work From Home
 Python/Django Clone for https://weworkremotely.com/
 

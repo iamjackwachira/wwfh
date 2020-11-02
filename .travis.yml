@@ -1,0 +1,12 @@
+language: python
+python:
+    - "3.6"
+env:
+    - DJANGO_SETTINGS_MODULE='config.settings.test'
+warnings_are_errors: false
+install:
+    - pip install -r requirements/ci.txt
+
+script:
+    - python manage.py collectstatic
+    - python manage.py test --settings=config.settings.test

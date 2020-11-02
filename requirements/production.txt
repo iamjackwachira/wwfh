@@ -1,4 +1,3 @@
 -r ./base.txt
 
 gunicorn==20.0.4  # https://github.com/benoitc/gunicorn
-whitenoise==5.2.0 # https://github.com/evansd/whitenoise
