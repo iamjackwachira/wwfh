@@ -10,13 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-import os
+import cloudinary
+import dj_database_url
 import environ
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = environ.Path(__file__) - 3
 env = environ.Env()
-
+env.read_env(env.str('BASE_DIR', '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -24,7 +26,7 @@ env = environ.Env()
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env(
     "DJANGO_SECRET_KEY",
-    default="jz2eBLCGvDPtIFd0WwlxnIoB2OyJrXs5CEvxYZUuq7B9n8sBpZewwxCEd9NmdU3O",
+    default="",
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -43,7 +45,7 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS = ["compressor", "tinymce", "widget_tweaks"]
+THIRD_PARTY_APPS = ["compressor", "tinymce", "widget_tweaks", "cloudinary"]
 
 LOCAL_APPS = ["core", "jobs"]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -81,12 +83,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
+# Cloudinary configurations
+cloudinary.config(cloud_name=env.str('CLOUDINARY_CLOUD_NAME'),
+                  api_key=env.str('CLOUDINARY_API_KEY'),
+                  api_secret=env.str('CLOUDINARY_API_SECRET'))
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {"default": env.db("DATABASE_URL")}
-
+DATABASES = {
+    "default": dj_database_url.parse(env("DATABASE_URL"))
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

@@ -1,8 +1,21 @@
 from django.db import models
 
+from cloudinary.models import CloudinaryField as BaseCloudinaryField
 from core.models import BaseModel
 from tinymce.models import HTMLField
 import jobs.choices as choices
+
+
+class CloudinaryField(BaseCloudinaryField):
+    def upload_options(self, model_instance):
+        return {
+            'public_id': model_instance.name,
+            'unique_filename': False,
+            'overwrite': True,
+            'resource_type': 'image',
+            'invalidate': True,
+            'quality': 'auto:eco',
+        }
 
 
 class JobPost(BaseModel):
@@ -38,7 +51,7 @@ class Company(BaseModel):
     name = models.CharField(max_length=200)
     company_statement = models.CharField(max_length=500)
     headquarters = models.CharField(max_length=200)
-    logo = models.ImageField(upload_to="company_uploads/", blank=True, null=True)
+    logo = CloudinaryField(blank=True, null=True)
     url = models.CharField(max_length=200)
     email = models.CharField(max_length=200, blank=True, null=True)
     description = HTMLField()

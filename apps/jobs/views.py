@@ -67,7 +67,7 @@ class JobListView(ListView):
 
         grouped_job_posts = defaultdict(list)
         for job_post in queryset.iterator():
-            grouped_job_posts[job_post.job_category].append(
+            grouped_job_posts[job_post.get_job_category_display()].append(
                 {
                     "id": job_post.id,
                     "title": job_post.title,

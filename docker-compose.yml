@@ -17,6 +17,7 @@ services:
             - wwfh_postgres
         environment:
             DATABASE_URL: "postgres://root:postgres@wwfh_postgres:5432/wwfh"
+            PORT: 8080
 
     wwfh_postgres:
         container_name: wwfh_postgres
