@@ -26,7 +26,7 @@ class JobPostForm(forms.Form):
     company_name = forms.CharField()
     company_statement = forms.CharField()
     company_logo = forms.ImageField()
-    company_url = forms.CharField()
+    company_url = forms.URLField()
     company_email = forms.EmailField()
     company_description = forms.CharField(widget=TinyMCE())
 

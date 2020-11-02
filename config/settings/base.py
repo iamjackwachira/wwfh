@@ -26,7 +26,7 @@ env.read_env(env.str('BASE_DIR', '.env'))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env(
     "DJANGO_SECRET_KEY",
-    default="",
+    default="fake-key",
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
