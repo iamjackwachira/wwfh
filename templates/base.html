@@ -59,8 +59,12 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             {% for category in categories %}
+            {% if category.slug in 'full_time,contract' %}
+            <a class="dropdown-item" href="{% url 'jobs:jobs-home' %}?job_type={{category.slug}}">{{category.name}}</a>
+            {% else %}
             <a class="dropdown-item"
               href="{% url 'jobs:jobs-home' %}?job_category={{category.slug}}">{{category.name}}</a>
+            {% endif %}
             {% endfor %}
           </div>
         </li>
