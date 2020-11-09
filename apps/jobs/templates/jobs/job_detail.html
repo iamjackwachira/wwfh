@@ -4,74 +4,93 @@
 {% block content %}
 {% load widget_tweaks %}
 <main role="main">
-    <div class="job-nav"><a href="{% url 'jobs:jobs-home' %}?job_category={{job_post.job_category}}">
-            <p style="float: right;"> See more {{job_post.get_job_category_display}} jobs<span id="arrow-right">→</span>
-            </p>
-        </a><a href="/">
-            <p style="float: left;z-index: 999;"><span id="arrow-left">←</span> Back to all jobs </p>
-        </a>
-    </div>
-    <div class="content">
-        <div class="job-post-header">
-            <div class="job-post-header-container">
-                <h3> Posted {{job_post.created_on|date:"M d" }}
-                </h3>
-                <h1> {{job_post.title}} </h1>
-                <a href="{% url 'jobs:jobs-home' %}?job_type={{job_post.job_type}}">
-                    <span class="post-tag">{{job_post.get_job_type_display}}</span>
-                </a>
-                <a href="{% url 'jobs:jobs-home' %}?job_category={{job_post.job_category}}">
-                    <span class="post-tag">{{job_post.get_job_category_display}}</span>
-                </a>
-                <a href="{% url 'jobs:jobs-home' %}?regional_restrictions={{job_post.regional_restrictions}}">
-                    <span class="post-tag">{{job_post.get_regional_restrictions_display}}</span>
-                </a>
-            </div>
-            <div class="company-details">
-                <a href="{% url 'jobs:company-detail' pk=job_post.company.id %}">
-                    <div class="company-logo" style="background-image: url({{job_post.company.logo.url}});"
-                        loading="lazy">
+    <div class="container">
+        <section class="job-nav row">
+            <a href="{% url 'jobs:jobs-home' %}?job_category={{job_post.job_category}}">
+                <p style="float: right;"> See more {{job_post.get_job_category_display}} jobs<span
+                        id="arrow-right">→</span>
+                </p>
+            </a><a href="/">
+                <p style="float: left;z-index: 999;"><span id="arrow-left">←</span> Back to all jobs </p>
+            </a>
+        </section>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="job-post-header-container">
+                            <h3> Posted {{job_post.created_on|date:"M d" }}
+                            </h3>
+                            <h1> {{job_post.title}} </h1>
+                            <a href="{% url 'jobs:jobs-home' %}?job_type={{job_post.job_type}}">
+                                <span class="post-tag">{{job_post.get_job_type_display}}</span>
+                            </a>
+                            <a href="{% url 'jobs:jobs-home' %}?job_category={{job_post.job_category}}">
+                                <span class="post-tag">{{job_post.get_job_category_display}}</span>
+                            </a>
+                            <a
+                                href="{% url 'jobs:jobs-home' %}?regional_restrictions={{job_post.regional_restrictions}}">
+                                <span class="post-tag">{{job_post.get_regional_restrictions_display}}</span>
+                            </a>
+                        </div>
                     </div>
-                </a>
-                <h2><a href="{% url 'jobs:company-detail' pk=job_post.company.id %}">{{job_post.company.name}}</a></h2>
-                <h3>
-                    <i class="fas fa-map-marker-alt"></i> {{job_post.job_location}}
-                </h3>
-                <h3><a target="_blank" href="{{job_post.company.url}}">
-                        <i class="fas fa-globe-americas"></i> View website
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="listing-container">
+                            {{job_post.description|safe}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="listing-tools">
+                            <a target="_blank" id="job-cta-alt-2" href="{{job_post.application_url}}"
+                                class="btn btn-danger">
+                                Apply for this position
+                            </a>
+                        </div>
+                        <section class="jobs related-jobs">
+                            <article>
+                                <h2> Related Jobs <span style="float: right;"><a
+                                            href="{% url 'jobs:jobs-home' %}?job_category={{job_post.job_category}}">
+                                            See more
+                                            {{job_post.get_job_category_display}} jobs<span
+                                                id="arrow-right">→</span></a></span>
+                                </h2>
+                                {% include "jobs/job_posts.html" %}
+                            </article>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="company-details">
+                    <a href="{% url 'jobs:company-detail' pk=job_post.company.id %}">
+                        <div class="company-logo" style="background-image: url({{job_post.company.logo.url}});"
+                            loading="lazy">
+                        </div>
                     </a>
-                </h3>
-                <h4> Jobs posted: {{job_post.company.num_jobs_posted}} </h4>
-                <a target="_blank" id="job-cta-alt-2" href="{{job_post.application_url}}" class="btn btn-danger">
-                    Apply for this position
-                </a>
-                <a href="/">
-                    <h5> View all jobs<span id="arrow-right">→</span></h5>
-                </a>
-                <br>
+                    <h2><a href="{% url 'jobs:company-detail' pk=job_post.company.id %}">{{job_post.company.name}}</a>
+                    </h2>
+                    <h3>
+                        <i class="fas fa-map-marker-alt"></i> {{job_post.job_location}}
+                    </h3>
+                    <h3><a target="_blank" href="{{job_post.company.url}}">
+                            <i class="fas fa-globe-americas"></i> View website
+                        </a>
+                    </h3>
+                    <h4> Jobs posted: {{job_post.company.num_jobs_posted}} </h4>
+                    <a target="_blank" id="job-cta-alt-2" href="{{job_post.application_url}}" class="btn btn-danger">
+                        Apply for this position
+                    </a>
+                    <a href="/">
+                        <h5> View all jobs<span id="arrow-right">→</span></h5>
+                    </a>
+                    <br>
+                </div>
             </div>
         </div>
-        <section class="job" id="job-show">
-            <div class="listing-container" id="job-listing-show-container">
-                {{job_post.description|safe}}
-            </div>
-            <div class="listing-tools listing-tools-desktop">
-                <a target="_blank" id="job-cta-alt-2" href="{{job_post.application_url}}" class="btn btn-danger">
-                    Apply for this position
-                </a>
-            </div>
-            <div class="jobs-container">
-                <section class="jobs related-jobs">
-                    <article>
-                        <h2> Related Jobs <span style="float: right;"><a
-                                    href="{% url 'jobs:jobs-home' %}?job_category={{job_post.job_category}}"> See more
-                                    {{job_post.get_job_category_display}} jobs<span id="arrow-right">→</span></a></span>
-                        </h2>
-                        {% include "jobs/job_posts.html" %}
-                    </article>
-                </section>
-            </div>
-        </section>
     </div>
 </main>
 {% endblock content %}

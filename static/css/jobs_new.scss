@@ -1,7 +1,5 @@
 .job-new {
     .job-form {
-        max-width: calc(100% - 175px);
-        padding: 25px;
         background-color: white;
 
         .form-row {
@@ -69,6 +67,11 @@
                 outline-width: 2px;
                 outline-color: rgba(144, 146, 148, 0.2);
             }
+        }
+    }
+    @include media-breakpoint-up(md) {
+        .job-form {
+            max-width: calc(100% - 175px);
         }
     }
 }
