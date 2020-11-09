@@ -1,15 +1,13 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <div class="px-10">
-            <h1 class="text-center header-logo">
-                {% if header_name %}
-                Remote {{header_name}} jobs
-                {% else %}
-                We Work From Home
-                {% endif %}
-            </h1>
-        </div>
-        <section class="px-10 intro">
+        <h1 class="text-center header-logo">
+            {% if header_name %}
+            Remote {{header_name}} jobs
+            {% else %}
+            We Work From Home
+            {% endif %}
+        </h1>
+        <section class="intro">
             {% if header_name %}
             <p class="text-center">
                 Find all <strong>{{header_name}}</strong> remote jobs below

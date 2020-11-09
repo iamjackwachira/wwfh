@@ -1,5 +1,5 @@
 section.jobs article {
-    max-width: calc(100% - 175px);
+    padding: 0 10px;
 
     ul {
         list-style: none;
@@ -36,7 +36,7 @@ section.jobs article {
                     color: #212529;
                     font-family: "Neufile Grotesk Semi Bold", sans-serif;
                     text-decoration: none;
-                    max-width: calc(100% - 175px);
+                    max-width: calc(100% - 50px);
                     display: inline-block;
                     white-space: nowrap;
                     text-overflow: ellipsis;
